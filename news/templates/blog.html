@@ -1,0 +1,27 @@
+<h1>Welcome</h1>
+{% block content %} {% load tweet_tags %} {% for tweet in tweets %}
+<div class="mdl-card__media">
+  {% autoescape off %}{% tweet_tags tweet %}{% endautoescape %} {% endfor %} {%
+  for post in reddit_posts %}
+  <blockquote class="reddit-card" data-card-created="1490648549">
+    <a href="{{reddit_posts.post_url}}">reddit_posts.title</a>
+    from <a href="{{" sub.url }}>{{ sub }}</a>
+  </blockquote>
+  {% endfor %}
+
+  <script
+    async
+    src="//embed.redditmedia.com/widgets/platform.js"
+    charset="UTF-8"
+  ></script>
+
+  <script
+    async
+    src="https://platform.twitter.com/widgets.js"
+    charset="utf-8"
+  ></script>
+  {% endblock %}
+</div>
+
+
+{% comment %} Learn to  {% endcomment %}
