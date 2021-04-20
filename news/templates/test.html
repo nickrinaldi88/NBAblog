@@ -1,4 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<h1>About</h1>
+<h3>{{ title|center:"15" }}</h3>
+<p>This is a template</p>
 
+<p>{{ my_text }} {{ my_number }} {{ my_list }}</p>
+
+{{ my_html|striptags }}
+
+<ul>
+  <li>Item1</li>
+  <li>Item2</li>
+</ul>
+
+<h1>{{ object.post_title }}</h1>
+<p>{{ object.item_text }}</p>
+<p>{{ object.published_date }}</p>
+
+
+{% endblock content %}

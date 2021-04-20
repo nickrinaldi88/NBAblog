@@ -7,6 +7,7 @@ import pprint
 import json
 import os
 import sys
+
 sys.path.insert(
     0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
 
@@ -45,7 +46,11 @@ def connect(key, secret, access_key, access_secret):
             url = default + str(status.id)
             current_status.append(url)
 
-    return current_status
+    return current_status # returns a list containing urls to our view 
+    # pass this list into our context
+    # our template parses the contents of the context in a loop
+    # passes in argument to tweet_tag argument which generates html
+
 
     # find tweet_id, store in local cache db
 result = connect(data['consumer_key'], data['consumer_secret'],
@@ -53,6 +58,3 @@ result = connect(data['consumer_key'], data['consumer_secret'],
 
 with open('twit_db.json', 'w') as outfile:
     json.dump(db, outfile, indent=2)
-
-print(result)
-

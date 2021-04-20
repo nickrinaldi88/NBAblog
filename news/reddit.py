@@ -1,7 +1,6 @@
 import json
 import requests
 import pprint
-
 sub = 'nba'
 
 response = requests.get(
@@ -19,13 +18,18 @@ posts = response.json()['data']['children']
 
 def generate(posts):
 
+    sub = 'nba'
     post_url = posts[0]['data']['url']
     sub_url = f"http: // www.reddit.com/r/{sub}"
     title = posts[0]['data']['title']
     # time_stamp = post[0]['data']['created']
 
-    items = [post_url, sub_url, title]
+    items = [post_url, sub_url, title, sub]
     return items
+    # return the_html
+
+
+red = generate(posts)
 
 
 # check post['data']['created'] timestamp, check whether or not post was created in the last minute, display it.

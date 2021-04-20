@@ -2,6 +2,7 @@
 -Place to start:
     -https://stackoverflow.com/questions/2128886/django-way-for-building-a-news-feed-status-update-activity-stream
     -Also, Google.
+-Look at stream library 
 
 
 1. Every 30 seconds - run script to fetch latest 10 tweets
@@ -19,10 +20,6 @@
     -Learn how to embed our tweets and represent them in our views.py folder, then determine the model
 4. Make sure Praw API works
 
-5. Before hooking up youtube api, make sure reddit and twitter posts will update.
-
-
-
 6.-Read in reddit posts, and mix them in with tweets, to display newest overall post in newsfeed based on most recent posting data
     
     -Add other functionality later on  
@@ -36,3 +33,27 @@
     -Finish current Django text tutorial, as well as Twitter feed tutorial
 
 8. When we have users https://django-activity-stream.readthedocs.io/en/latest/
+
+
+4/18/21
+
+-Test out printing out reddit and tweets on the same page
+-Add them to a dict, differentiating between reddit and tweet posts
+-loop through main dict, if post is this, then api call 
+-Get created_post data
+One for loop. For post in dict of posts, if last_created post is tweet, add the id to the tweettags
+-If reddit, add to reddit tags. 
+
+-Create our main Model for all standard posts, or multiple models. The models themselves do the API calls for appropriate site 
+
+-Store html data in list
+-Read this article
+-https://simpleisbetterthancomplex.com/tutorial/2018/02/03/how-to-use-restful-apis-with-django.html
+-Look up appropriate model fields
+-API calls within model? or view
+
+Endgame work:
+
+-Handle exception cases if server goes down for both api's
+-Secure the API keys
+    -https://simpleisbetterthancomplex.com/tips/2016/11/01/django-tip-19-protecting-sensitive-information.html
