@@ -8,6 +8,8 @@ import json
 import os
 import sys
 
+sources = {}
+
 # twitter
 sys.path.insert(
     0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
@@ -47,15 +49,22 @@ def tweet_connect(key, secret, access_key, access_secret):
             url = default + str(status.id)
             current_status.append(url)
 
-    return current_status # passes into the tweet_tags
+    return current_status  # passes into the tweet_tags
+
+
+tweet_result = tweet_connect(tweet_data['consumer_key'],
+                             tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
 
 # reddit
 
 def reddit_connect(client_id, secret, username, password, user_agent):
 
+    # the sub
+
     sub = 'nba'
 
+    # connection instance
     reddit = praw.Reddit(
         client_id=client_id,
         client_secret=secret,
@@ -63,32 +72,29 @@ def reddit_connect(client_id, secret, username, password, user_agent):
         password=password,
         user_agent=user_agent)
 
+    # list of id's
     id_list = []
     # pprint.pprint(dir(reddit))
 
+    # appending id's
     for r in reddit.subreddit('nba').hot(limit=9):
         id_list.append(r.id)
 
-    return id_list[2:] # eliminate the two pinned threads
+    return id_list[2:]  # eliminate the two pinned threads
 
+
+# client_id and secret
 
 red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
 
 red_f = open(red_datafile)
-data = json.load(red_f)
+red_data = json.load(red_f)
 
-reddit = praw.Reddit(
-    client_id=data['client_id'],
-    client_secret=data['client_secret'],
-    username=data['username'],
-    password=data['password'],
-    user_agent=data['user_agent'])
+red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
+                            red_data['username'], red_data['password'], red_data['user_agent'])
 
-submission = reddit.submission(id=)
 
-title = submission.title
-the_url = submission.url
+sources['twitter'] = tweet_result
+sources['reddit'] = red_result
 
-print(submission)
-
-sub_url = "https://www.reddit.com/r/nba"
+print(sources)

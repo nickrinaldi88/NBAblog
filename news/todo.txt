@@ -35,7 +35,21 @@
 8. When we have users https://django-activity-stream.readthedocs.io/en/latest/
 
 
-4/18/21
+4/20/21
+
+//////////////////
+
+-Write comments on services.py so you remember what the code is doing 
+-Connect to both APIs on services.py
+-create dictionary
+-take appropriate items (reddit post id), (twitter url), store them as values with either reddit or twitter key
+-record date and time variables for each post, then 
+-also create list of posts in order ascending by latest creation date
+-Load dict into views.py, pass into template as context. somehow pass in list through context
+-loop through context 
+-if list post is in reddit key, pass into reddit tag, elif twitter tag, pass into tweet tags
+
+//////////////////
 
 -Test out printing out reddit and tweets on the same page
 -Add them to a dict, differentiating between reddit and tweet posts
