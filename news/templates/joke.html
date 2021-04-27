@@ -1,7 +1,11 @@
 <div class="mdl-card__media" id="timeline">
-{% block content %}{% load reddit_tag_test %} {% load tweet_tags%} {% for id in id_list %}
-{% autoescape off %} {% reddit_tag_test id %}{% endautoescape %}
-{% endfor %} 
+{% block content %}{% load reddit_tag_test %} {% load tweet_tags%} {% for item in connects %}
+{% autoescape off %}  {% if item|first in 'https' %}
+                      {% tweet_tags item %}
+                      {% else %}
+                      {% reddit_tag_test item %}
+                        {% endif %}
+{% endfor %} {% endautoescape %}
 </div>
 {% endblock %}
 <script
@@ -9,4 +13,9 @@
   src="//embed.redditmedia.com/widgets/platform.js"
   charset="UTF-8"
 ></script>
+  <script
+    async
+    src="https://platform.twitter.com/widgets.js"
+    charset="utf-8"
+  ></script>
 

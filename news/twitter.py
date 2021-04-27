@@ -41,16 +41,19 @@ def connect(key, secret, access_key, access_secret):
     default = 'https://twitter.com/twitter/statuses/'
 
     for status in my_timeline:
-        if status.id not in db:
-            db.append(status.id)
-            url = default + str(status.id)
-            current_status.append(url)
+        print(status.created_at)
+        break
 
-    return current_status # returns a list containing urls to our view 
+    # for status in my_timeline:
+    #     if status.id not in db:
+    #         db.append(status.id)
+    #         url = default + str(status.id)
+    #         current_status.append(url)
+
+    # return current_status # returns a list containing urls to our view
     # pass this list into our context
     # our template parses the contents of the context in a loop
     # passes in argument to tweet_tag argument which generates html
-
 
     # find tweet_id, store in local cache db
 result = connect(data['consumer_key'], data['consumer_secret'],

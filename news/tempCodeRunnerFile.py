@@ -1,2 +1,2 @@
-with open('red_db.json', 'w') as outfile:
-    json.dump(db, outfile, indent=2)
+        # r_post_dict[r.id] = datetime.datetime.strptime(
+        #     dt_str, '%d/%m/%y %H:%M:%S')

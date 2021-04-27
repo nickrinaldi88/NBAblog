@@ -8,6 +8,7 @@ from news import reddit
 from news import red_praw
 from .models import BlogPost
 from .forms import BlogPostForm
+from news import services
 
 # Create your views here.
 
@@ -71,16 +72,9 @@ def archive(request):
 
 def joke(request):
 
-    here = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(here, 'red_info.json')
-
-    f = open(filename)
-    data = json.load(f)
-
-    id_list = red_praw.connect(data['client_id'], data['client_secret'],
-                               data['username'], data['password'], data['user_agent'])
+    connects = services.connections()
     # items
-    return render(request, 'joke.html', dict(id_list=id_list))
+    return render(request, 'joke.html', dict(connects=connects))
     # determine what pages I want
 
 

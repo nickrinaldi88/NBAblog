@@ -3,7 +3,7 @@ import os
 import sys
 import json
 import pprint
-
+import datetime
 
 
 here = os.path.dirname(os.path.abspath(__file__))
@@ -17,7 +17,7 @@ def connect(client_id, secret, username, password, user_agent):
     sub = 'nba'
 
     reddit = praw.Reddit(
-        client_id = client_id,
+        client_id=client_id,
         client_secret=secret,
         username=username,
         password=password,
@@ -27,19 +27,19 @@ def connect(client_id, secret, username, password, user_agent):
     # pprint.pprint(dir(reddit))
 
     for r in reddit.subreddit('nba').hot(limit=9):
+        # pprint.pprint(dir(r))
+        time = r.created
+        print(datetime.datetime.fromtimestamp(time))
+        break
         id_list.append(r.id)
 
     return id_list[2:]
-            
-
-    
-
 
     # for r in reddit.subreddit('nba').hot(limit=7):
     #     if not r.stickied:
 
     #         print(r.url) # grab 5 hottest posts
-    #                                     # return the url 
+    #                                     # return the url
     #         print(r.title)
     #         print(r.id)
     #         # pprint.pprint(dir(r))
@@ -47,6 +47,6 @@ def connect(client_id, secret, username, password, user_agent):
 
     # print(id_list)
 
-    
 
-connect(data['client_id'], data['client_secret'], data['username'], data['password'], data['user_agent'])
+connect(data['client_id'], data['client_secret'],
+        data['username'], data['password'], data['user_agent'])

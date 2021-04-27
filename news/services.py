@@ -7,6 +7,7 @@ import pprint
 import json
 import os
 import sys
+import datetime
 
 sources = {}
 
@@ -36,6 +37,8 @@ def tweet_connect(key, secret, access_key, access_secret):
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
 
+    t_post_dict = {}
+
     # pprint.pprint(dir(api))
     my_timeline = api.home_timeline(count=5)
 
@@ -47,9 +50,10 @@ def tweet_connect(key, secret, access_key, access_secret):
         if status.id not in db:
             db.append(status.id)
             url = default + str(status.id)
+            t_post_dict[url] = str(status.created_at)
             current_status.append(url)
 
-    return current_status  # passes into the tweet_tags
+    return t_post_dict  # passes into the tweet_tags
 
 
 tweet_result = tweet_connect(tweet_data['consumer_key'],
@@ -63,6 +67,8 @@ def reddit_connect(client_id, secret, username, password, user_agent):
     # the sub
 
     sub = 'nba'
+
+    r_post_dict = {}
 
     # connection instance
     reddit = praw.Reddit(
@@ -78,9 +84,12 @@ def reddit_connect(client_id, secret, username, password, user_agent):
 
     # appending id's
     for r in reddit.subreddit('nba').hot(limit=9):
+        time = r.created
+        dt_str = str(datetime.datetime.fromtimestamp(time))
+        r_post_dict[r.id] = dt_str
         id_list.append(r.id)
 
-    return id_list[2:]  # eliminate the two pinned threads
+    return r_post_dict  # eliminate the two pinned threads
 
 
 # client_id and secret
@@ -97,4 +106,46 @@ red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
 sources['twitter'] = tweet_result
 sources['reddit'] = red_result
 
-print(sources)
+# find current datetime
+date1 = str(datetime.datetime.today().replace(microsecond=0))
+# actual_date = datetime.datetime.strptime(date1, '%Y/%m/%d %H:%M:%S')
+
+# print(date1)
+
+
+# find difference between current time and values
+
+
+# pprint.pprint(sources)
+# print(date1)
+
+def connections():
+
+    time_assoc_dict = {}
+    times = []
+    src = []
+
+    for keys, value in sources.items():
+        for k, v in value.items():
+            time_posted = v
+            # find current time, # compare to time_posted. times[source] = time_difference
+            source = k
+            time_assoc_dict[source] = time_posted
+            times.append(time_posted)
+
+    for post in times:
+        newest_post = min(times)  # find the newest post
+        times.remove(newest_post)  # remove it from the list
+        for k, v in time_assoc_dict.items():
+            if newest_post == v:
+                src.append(k)
+
+    return src
+
+    # sort times dict by shortest to longest
+    # post source based on time.
+
+
+# on joke.html for item in srcs, if src starts with 'https' load tweet tag, else, load reddit tag
+# pass in src as context
+# print(min(times))
