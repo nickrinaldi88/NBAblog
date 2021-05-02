@@ -1,10 +1,18 @@
+{% comment %} <style>
+.timeline{
+  text-align:center
+}
+</style> {% endcomment %}
+
+{% block content %}{% load reddit_tag_test %} {% load tweet_tags %} {% autoescape off %}
+<h1>Welcome</h1>
+{% for item in connects %}
 <div class="mdl-card__media" id="timeline">
-{% block content %}{% load reddit_tag_test %} {% load tweet_tags%} {% for item in connects %}
-{% autoescape off %}  {% if item|first in 'https' %}
-                      {% tweet_tags item %}
-                      {% else %}
-                      {% reddit_tag_test item %}
-                        {% endif %}
+  {% if item|first in 'h' %}
+    {% tweet_tags item %}
+  {% else %}
+    {% reddit_tag_test item %}
+  {% endif %}
 {% endfor %} {% endautoescape %}
 </div>
 {% endblock %}
@@ -13,9 +21,9 @@
   src="//embed.redditmedia.com/widgets/platform.js"
   charset="UTF-8"
 ></script>
-  <script
+<script
     async
     src="https://platform.twitter.com/widgets.js"
     charset="utf-8"
-  ></script>
+></script>
 

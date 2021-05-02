@@ -39,7 +39,6 @@ def tweet_connect(key, secret, access_key, access_secret):
 
     t_post_dict = {}
 
-    # pprint.pprint(dir(api))
     my_timeline = api.home_timeline(count=5)
 
     current_status = []
@@ -53,8 +52,10 @@ def tweet_connect(key, secret, access_key, access_secret):
             t_post_dict[url] = str(status.created_at)
             current_status.append(url)
 
-    return t_post_dict  # passes into the tweet_tags
+    return t_post_dict
 
+
+# generate list of tweet urls
 
 tweet_result = tweet_connect(tweet_data['consumer_key'],
                              tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
@@ -64,13 +65,10 @@ tweet_result = tweet_connect(tweet_data['consumer_key'],
 
 def reddit_connect(client_id, secret, username, password, user_agent):
 
-    # the sub
-
     sub = 'nba'
 
     r_post_dict = {}
 
-    # connection instance
     reddit = praw.Reddit(
         client_id=client_id,
         client_secret=secret,
@@ -78,18 +76,15 @@ def reddit_connect(client_id, secret, username, password, user_agent):
         password=password,
         user_agent=user_agent)
 
-    # list of id's
     id_list = []
-    # pprint.pprint(dir(reddit))
 
-    # appending id's
-    for r in reddit.subreddit('nba').hot(limit=9):
+    for r in reddit.subreddit(sub).new(limit=9):
         time = r.created
         dt_str = str(datetime.datetime.fromtimestamp(time))
         r_post_dict[r.id] = dt_str
         id_list.append(r.id)
 
-    return r_post_dict  # eliminate the two pinned threads
+    return r_post_dict
 
 
 # client_id and secret
@@ -98,6 +93,8 @@ red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\new
 
 red_f = open(red_datafile)
 red_data = json.load(red_f)
+
+# generate list of post id's
 
 red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
                             red_data['username'], red_data['password'], red_data['user_agent'])
@@ -140,10 +137,17 @@ def connections():
             if newest_post == v:
                 src.append(k)
 
+    src = src[::-1]
+
     return src
 
-    # sort times dict by shortest to longest
-    # post source based on time.
+
+ans = connections()
+
+print(ans)
+
+# sort times dict by shortest to longest
+# post source based on time.
 
 
 # on joke.html for item in srcs, if src starts with 'https' load tweet tag, else, load reddit tag
