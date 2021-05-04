@@ -37,16 +37,6 @@
 
 4/23/21
 
-//////////////////
-
-
--take appropriate items (reddit post id), (twitter url), store them as values with either reddit or twitter key
--Check api to find date/time parameters
--record date and time variables for each post, then 
--also create list of posts in order ascending by latest creation date
--Load dict into views.py, pass into template as context. somehow pass in list through context
--loop through context 
--if list post is in reddit key, pass into reddit tag, elif twitter tag, pass into tweet tags
 
 //////////////////
 
@@ -65,8 +55,19 @@ One for loop. For post in dict of posts, if last_created post is tweet, add the 
 -Look up appropriate model fields
 -API calls within model? or view
 
+
+
 Endgame work:
 
 -Handle exception cases if server goes down for both api's
 -Secure the API keys
     -https://simpleisbetterthancomplex.com/tips/2016/11/01/django-tip-19-protecting-sensitive-information.html
+
+
+5/3/21
+
+
+2. Create a Model that will be our DB model. It will store a reddit post or twitter post into our DB, 
+    - differentiating between a reddit or twitter post based on ID or url
+    -Then fetch model objects to make post?
+3. Create main div and center it, add a secure border

@@ -39,7 +39,7 @@ def tweet_connect(key, secret, access_key, access_secret):
 
     t_post_dict = {}
 
-    my_timeline = api.home_timeline(count=5)
+    my_timeline = api.home_timeline(count=50)
 
     current_status = []
 
@@ -52,7 +52,8 @@ def tweet_connect(key, secret, access_key, access_secret):
             t_post_dict[url] = str(status.created_at)
             current_status.append(url)
 
-    return t_post_dict
+    # return t_post_dict
+    return current_status
 
 
 # generate list of tweet urls
@@ -78,13 +79,14 @@ def reddit_connect(client_id, secret, username, password, user_agent):
 
     id_list = []
 
-    for r in reddit.subreddit(sub).new(limit=9):
+    for r in reddit.subreddit(sub).hot(limit=50):
         time = r.created
         dt_str = str(datetime.datetime.fromtimestamp(time))
         r_post_dict[r.id] = dt_str
         id_list.append(r.id)
 
-    return r_post_dict
+    # return r_post_dict
+    return id_list[2:]
 
 
 # client_id and secret
@@ -142,9 +144,9 @@ def connections():
     return src
 
 
-ans = connections()
+# ans = connections()
 
-print(ans)
+# print(ans)
 
 # sort times dict by shortest to longest
 # post source based on time.
