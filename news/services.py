@@ -12,8 +12,13 @@ import datetime
 sources = {}
 
 # twitter
+# sys.path.insert(
+#     0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
+
+# twitter mac
+
 sys.path.insert(
-    0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
+    0, '/Users/nick/Desktop/NBAblog-1/news')
 
 here = os.path.dirname(os.path.abspath(__file__))
 filename = os.path.join(here, 'tweet_info.json')
@@ -71,27 +76,35 @@ def reddit_connect(client_id, secret, username, password, user_agent):
     r_post_dict = {}
 
     reddit = praw.Reddit(
-        client_id=client_id,
+        client_id=cliesnt_id,
         client_secret=secret,
         username=username,
         password=password,
         user_agent=user_agent)
 
     id_list = []
+    url_list = []
 
     for r in reddit.subreddit(sub).hot(limit=50):
+        url = r.permalink
         time = r.created
         dt_str = str(datetime.datetime.fromtimestamp(time))
         r_post_dict[r.id] = dt_str
         id_list.append(r.id)
+        url_list.append(url)
 
     # return r_post_dict
-    return id_list[2:]
+    # return id_list[2:]
+    return url_list[2:]
 
 
 # client_id and secret
 
-red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+# red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+
+# mac reddit
+
+red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
 
 red_f = open(red_datafile)
 red_data = json.load(red_f)

@@ -12,7 +12,9 @@ register = template.Library()
 @register.simple_tag
 def reddit_tag_test(the_id):
 
-    file = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    # file = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    # mac file
+    file = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
 
     f = open(file)
     data = json.load(f)
