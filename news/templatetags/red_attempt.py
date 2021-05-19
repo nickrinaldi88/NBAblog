@@ -17,9 +17,11 @@ def red_attempt(url):  # what is passed into tweet_tags tho?
 
     # pprint.pprint(dir(item))
     # break
-    endpoint = f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}"
+    endpoint = requests.get(
+        f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}")
 
-    return type(endpoint)
+    # endpoint_json = endpoint.json()
+    return endpoint.json()
 
 
 goal = red_attempt(
