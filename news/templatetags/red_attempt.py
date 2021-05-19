@@ -20,8 +20,11 @@ def red_attempt(url):  # what is passed into tweet_tags tho?
     endpoint = requests.get(
         f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}")
 
+    print(endpoint.json())
+    print(type(endpoint))
+
     # endpoint_json = endpoint.json()
-    return endpoint.json()
+    # return str(endpoint.json()["html"])
 
 
 goal = red_attempt(
