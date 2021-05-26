@@ -66,8 +66,10 @@ def tweet_connect(key, secret, access_key, access_secret):
 tweet_result = tweet_connect(tweet_data['consumer_key'],
                              tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
+print(tweet_result)
 
 # reddit
+
 
 def reddit_connect(client_id, secret, username, password, user_agent):
 

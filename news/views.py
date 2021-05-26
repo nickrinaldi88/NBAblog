@@ -103,5 +103,3 @@ def joke(request):
     return render(request, 'joke.html', {'reddit': red, 'twitter': twit})
 # determine what pages I want
 
-
-# LOOK UP HOW TO PASS IN CONTEXT

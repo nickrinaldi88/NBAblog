@@ -71,3 +71,14 @@ Endgame work:
     - differentiating between a reddit or twitter post based on ID or url
     -Then fetch model objects to make post?
 3. Create main div and center it, add a secure border
+
+----
+
+5/26/2021
+
+-Figure out why tempCodeRunner file is generated upon run
+-Test out returning json 
+-Troubleshoot
+-Add more django functionality
+-Add a login system
+-Add other misc features that prove knowledge and understanding of django
