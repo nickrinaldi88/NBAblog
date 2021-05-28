@@ -51,11 +51,10 @@ def tweet_connect(key, secret, access_key, access_secret):
     default = 'https://twitter.com/twitter/statuses/'
 
     for status in my_timeline:
-        if status.id not in db:
-            db.append(status.id)
-            url = default + str(status.id)
-            t_post_dict[url] = str(status.created_at)
-            current_status.append(url)
+        db.append(status.id)
+        url = default + str(status.id)
+        t_post_dict[url] = str(status.created_at)
+        current_status.append(url)
 
     # return t_post_dict
     return current_status
