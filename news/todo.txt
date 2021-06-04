@@ -1,18 +1,20 @@
 5/28/21
 
 1. Add scrolling-to-update functionality
+1a. Add refresh button
+2. Combine Reddit and Twitter news into one timeline
 2. Add login/user functionality
 2a. add ability to save posts
-3. Add more misc features
-4. Make the page pretty
-5. Handle server errors
+3. Random Stats bar (request, bball ref, etc.)
+3a. Search Bar 
+3b. Ticker at top of the page for betting odds
+4. Add more misc features
+5. Make the page pretty
+6. Handle server errors
 
 
 
-
-
-
-
+-- ON HOLD
 
 MISC Stuff
 
@@ -47,11 +49,11 @@ Endgame work:
     -https://simpleisbetterthancomplex.com/tips/2016/11/01/django-tip-19-protecting-sensitive-information.html
 
 
-5/26/2021
 
--Figure out why tempCodeRunner file is generated upon run
--Test out returning json 
--Troubleshoot
--Add more django functionality
--Add a login system
--Add other misc features that prove knowledge and understanding of django
+
+'''OVERHAUL'''
+-May collect HTML data through Models, have like Modelfields be url: site.url, etc.
+    -Model fields correspond to reponse objects
+    -Store that data. Then fetch from Database. 
+    
+-So we'll have to fetch from database and place in our view. 

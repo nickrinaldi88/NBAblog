@@ -1,17 +1,57 @@
+from news.serializers import PostSerializer
 import os
 import json
 import requests
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from rest_framework import generics
 from news import twitter
 from news import reddit
 from news import red_praw
-from .models import BlogPost
-from .forms import BlogPostForm
+from .models import Post
 from news import services
 import sys
 
 # Create your views here.
+
+# create api view
+
+
+class PostView(generics.CreateAPIView):
+    queryset = Post.objects.all()  # all objects (all posts?) We want all the posts
+    serializer_class = PostSerializer  # should return json response
+
+
+def main(request):
+
+    # reddit_login
+    # mac reddit
+    # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
+
+    red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    red_f = open(red_datafile)
+    red_data = json.load(red_f)
+
+    red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
+                                  red_data['username'], red_data['password'], red_data['user_agent'])
+    # twitter login
+
+    sys.path.insert(
+        0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
+
+    # sys.path.insert(
+    # 0, '/Users/nick/Desktop/NBAblog-1/news')
+
+    here = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(here, 'tweet_info.json')
+
+    tweet_f = open(filename)
+    tweet_data = json.load(tweet_f)
+
+    twit = services.tweet_connect(tweet_data['consumer_key'],
+                                  tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
+
+    return render(request, 'main.html', {'reddit': red, 'twitter': twit})
 
 
 def index(request):
@@ -69,37 +109,3 @@ def blog_post_view(request):
 def archive(request):
     return HttpResponse("Archive page")
     # will the page after a single post is clicked on
-
-
-def joke(request):
-
-    # reddit_login
-    # mac reddit
-    # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
-
-    red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
-    red_f = open(red_datafile)
-    red_data = json.load(red_f)
-
-    red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
-                                  red_data['username'], red_data['password'], red_data['user_agent'])
-    # twitter login
-
-    sys.path.insert(
-        0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
-
-    # sys.path.insert(
-    # 0, '/Users/nick/Desktop/NBAblog-1/news')
-
-    here = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(here, 'tweet_info.json')
-
-    tweet_f = open(filename)
-    tweet_data = json.load(tweet_f)
-
-    twit = services.tweet_connect(tweet_data['consumer_key'],
-                                  tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
-
-    return render(request, 'joke.html', {'reddit': red, 'twitter': twit})
-# determine what pages I want
-

@@ -1,7 +1,7 @@
 from django.urls import path
-
 from . import views
-from news.views import blog_post_view
+from .views import PostView
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -9,6 +9,6 @@ urlpatterns = [
     path('test/<int:my_id>/', views.test, name='test'),
     path('detail/', views.detail, name='detail'),
     path('archive/', views.archive, name='archive'),
-    path('joke/', views.joke, name='joke'),
-    path('blogpost/', blog_post_view),
+    path('main/', views.main, name='main'),
+    path('postview/', PostView.as_view()),
 ]

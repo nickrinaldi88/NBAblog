@@ -18,6 +18,9 @@ def tweet_tags(url):  # what is passed into tweet_tags tho?
     return tweet_html  # returns to our template
 
 
+result = tweet_tags('https://twitter.com/twitter/statuses/1400569996325965824')
+print(result)
+
 # 1. grab a url
 # 2. pass it into our tweet_tags function
 # 3. Take the result and render into our view through context
