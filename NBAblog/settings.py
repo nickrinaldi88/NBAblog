@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'rest_framework',
+    'frontend.apps.FrontendConfig',
 ]
 
 MIDDLEWARE = [

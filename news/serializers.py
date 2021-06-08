@@ -8,3 +8,10 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'post_type', 'root_url', 'html', 'created_at')
     # take model
     # translate into json response
+
+
+class CreatePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('post_type', 'root_url', 'html', 'created_at')
+ 
