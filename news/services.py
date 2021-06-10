@@ -117,9 +117,7 @@ red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
 sources['twitter'] = tweet_result
 sources['reddit'] = red_result
 
-# find current datetime
-date1 = str(datetime.datetime.today().replace(microsecond=0))
-# actual_date = datetime.datetime.strptime(date1, '%Y/%m/%d %H:%M:%S')
+print(sources)
 
 # print(date1)
 
