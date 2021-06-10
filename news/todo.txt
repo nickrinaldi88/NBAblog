@@ -1,8 +1,15 @@
 5/28/21
 
 pre 1. Finish Tech with Tim tutorial
--Figure out current error: our path pages Login.js and CreateUser.js are presenting blank pages when the 'exact' is added to the path in homepage.js
--Once this is figured out, you can move on.
+
+TODO:
+-Have a script fetching twitter and reddit API data over intervals of time. (Service.py)
+-This script needs to post this data to our database (models.py). Otherwise, we're just posting the raw API data onto our page.
+-Use tech with tim's react tutorial to design the frontend
+-Then create user authentication(What should the user be able to do?)
+
+CURRENT PROBLEM:
+-When we fetch reddit and twitter posts from our database, They're not rendering properly compared when we post them directly from the api result on main.html
 
 
 -How our program should work:
@@ -12,6 +19,9 @@ pre 1. Finish Tech with Tim tutorial
     -Send GET Request to Twitter and Reddit to fetch data.
     -Store data in database
     -Send POST request of Data to front end
+
+
+-Will have background task fetching the api data. Can we post this data into our database?
 
 -REMINDER
     -views.py may have some error, because we're following Tim's tutorial and its a different project than ours. We just need a user to scroll our page, we're putting the posts on their screen. They don't need to host anything. Just keep this in mind if errors show up. 
@@ -26,6 +36,8 @@ pre 1. Finish Tech with Tim tutorial
 4. Add more misc features
 5. Make the page pretty
 6. Handle server errors
+
+
 
 
 

@@ -33,102 +33,102 @@ except:
     db = []
 
 
-# def tweet_connect(key, secret, access_key, access_secret):
+def tweet_connect(key, secret, access_key, access_secret):
 
-#     auth = tweepy.OAuthHandler(key, secret)
+    auth = tweepy.OAuthHandler(key, secret)
 
-#     auth.set_access_token(access_key, access_secret)
+    auth.set_access_token(access_key, access_secret)
 
-#     api = tweepy.API(auth, wait_on_rate_limit=True,
-#                      wait_on_rate_limit_notify=True)
+    api = tweepy.API(auth, wait_on_rate_limit=True,
+                     wait_on_rate_limit_notify=True)
 
-#     t_post_dict = {}
+    t_post_dict = {}
 
-#     my_timeline = api.home_timeline(count=50)
+    my_timeline = api.home_timeline(count=50)
 
-#     current_status = []
+    current_status = []
 
-#     default = 'https://twitter.com/twitter/statuses/'
+    default = 'https://twitter.com/twitter/statuses/'
 
-#     for status in my_timeline:
-#         db.append(status.id)
-#         url = default + str(status.id)
-#         t_post_dict[url] = str(status.created_at)
-#         current_status.append(url)
+    for status in my_timeline:
+        db.append(status.id)
+        url = default + str(status.id)
+        t_post_dict[url] = str(status.created_at)
+        current_status.append(url)
 
-#     # return t_post_dict
-#     return current_status
-
-
-# # generate list of tweet urls
-
-# tweet_result = tweet_connect(tweet_data['consumer_key'],
-#                              tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
-
-# '''reddit'''
+    # return t_post_dict
+    return current_status
 
 
-# def reddit_connect(client_id, secret, username, password, user_agent):
+# generate list of tweet urls
 
-#     sub = 'nba'
+tweet_result = tweet_connect(tweet_data['consumer_key'],
+                             tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
-#     r_post_dict = {}
-
-#     reddit = praw.Reddit(
-#         client_id=client_id,
-#         client_secret=secret,
-#         username=username,
-#         password=password,
-#         user_agent=user_agent)
-
-#     id_list = []
-#     url_list = []
-
-#     for r in reddit.subreddit(sub).hot(limit=50):
-#         url = r.permalink
-#         time = r.created
-#         dt_str = str(datetime.datetime.fromtimestamp(time))
-#         r_post_dict[r.id] = dt_str
-#         id_list.append(r.id)
-#         url_list.append(url)
-
-#     # return r_post_dict
-#     # return id_list[2:]
-#     return url_list[2:]
+'''reddit'''
 
 
-# # client_id and secret
+def reddit_connect(client_id, secret, username, password, user_agent):
 
-# red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    sub = 'nba'
 
-# # mac reddit
+    r_post_dict = {}
 
-# # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
+    reddit = praw.Reddit(
+        client_id=client_id,
+        client_secret=secret,
+        username=username,
+        password=password,
+        user_agent=user_agent)
 
-# red_f = open(red_datafile)
-# red_data = json.load(red_f)
+    id_list = []
+    url_list = []
 
-# # generate list of post id's
+    for r in reddit.subreddit(sub).hot(limit=50):
+        url = r.permalink
+        time = r.created
+        dt_str = str(datetime.datetime.fromtimestamp(time))
+        r_post_dict[r.id] = dt_str
+        id_list.append(r.id)
+        url_list.append(url)
 
-# red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
-#                             red_data['username'], red_data['password'], red_data['user_agent'])
-
-
-# sources['twitter'] = tweet_result
-# sources['reddit'] = red_result
-
-# # find current datetime
-# date1 = str(datetime.datetime.today().replace(microsecond=0))
-# # actual_date = datetime.datetime.strptime(date1, '%Y/%m/%d %H:%M:%S')
-
-# # print(date1)
+    # return r_post_dict
+    # return id_list[2:]
+    return url_list[2:]
 
 
-# # find difference between current time and values
+# client_id and secret
+
+red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+
+# mac reddit
+
+# red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
+
+red_f = open(red_datafile)
+red_data = json.load(red_f)
+
+# generate list of post id's
+
+red_result = reddit_connect(red_data['client_id'], red_data['client_secret'],
+                            red_data['username'], red_data['password'], red_data['user_agent'])
 
 
-# # pprint.pprint(sources)
-# # print(date1)
+sources['twitter'] = tweet_result
+sources['reddit'] = red_result
+
+# find current datetime
+date1 = str(datetime.datetime.today().replace(microsecond=0))
+# actual_date = datetime.datetime.strptime(date1, '%Y/%m/%d %H:%M:%S')
+
+# print(date1)
+
+
+# find difference between current time and values
+
+
+# pprint.pprint(sources)
+# print(date1)
 
 # def connections():
 

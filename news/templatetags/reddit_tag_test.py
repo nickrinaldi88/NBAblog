@@ -12,9 +12,9 @@ register = template.Library()
 @register.simple_tag
 def reddit_tag_test(the_id):
 
-    # file = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    file = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
     # mac file
-    file = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
+    # file = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
 
     f = open(file)
     data = json.load(f)
@@ -33,5 +33,10 @@ def reddit_tag_test(the_id):
     sub_url = "https://www.reddit.com/r/nba"
 
     the_html = f"<blockquote class='reddit-card' data-card-created='1490648549'> <a href={the_url}>{title}</a> from <a href={sub_url}>nba</a></blockquote>"
+    print(sub_url)
 
     return the_html
+
+
+ans = reddit_tag_test("mnk3sx")
+print(ans)

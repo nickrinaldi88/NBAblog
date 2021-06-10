@@ -51,6 +51,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+
 '''I need to learn how to integrate models with our api data'''
 '''store api data in models'''
 

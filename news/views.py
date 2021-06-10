@@ -44,36 +44,36 @@ class CreatePostView(APIView):
         return PostSerializer
 
 
-# def main(request):
+def main(request):
 
-#     # reddit_login
-#     # mac reddit
-#     # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
+    # reddit_login
+    # mac reddit
+    # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
 
-#     red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
-#     red_f = open(red_datafile)
-#     red_data = json.load(red_f)
+    red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
+    red_f = open(red_datafile)
+    red_data = json.load(red_f)
 
-#     red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
-#                                   red_data['username'], red_data['password'], red_data['user_agent'])
-#     # twitter login
+    red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
+                                  red_data['username'], red_data['password'], red_data['user_agent'])
+    # twitter login
 
-#     sys.path.insert(
-#         0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
+    sys.path.insert(
+        0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
 
-#     # sys.path.insert(
-#     # 0, '/Users/nick/Desktop/NBAblog-1/news')
+    # sys.path.insert(
+    # 0, '/Users/nick/Desktop/NBAblog-1/news')
 
-#     here = os.path.dirname(os.path.abspath(__file__))
-#     filename = os.path.join(here, 'tweet_info.json')
+    here = os.path.dirname(os.path.abspath(__file__))
+    filename = os.path.join(here, 'tweet_info.json')
 
-#     tweet_f = open(filename)
-#     tweet_data = json.load(tweet_f)
+    tweet_f = open(filename)
+    tweet_data = json.load(tweet_f)
 
-#     twit = services.tweet_connect(tweet_data['consumer_key'],
-#                                   tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
+    twit = services.tweet_connect(tweet_data['consumer_key'],
+                                  tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
-#     return render(request, 'main.html', {'reddit': red, 'twitter': twit})
+    return render(request, 'main.html', {'reddit': red, 'twitter': twit})
 
 
 def index(request):
@@ -129,5 +129,7 @@ def blog_post_view(request):
 
 
 def archive(request):
-    return HttpResponse("Archive page")
+    # Have api fetch store data in django database
+    all_posts = Post.objects.all
+    return render(request, "test.html", {'all': all_posts})
     # will the page after a single post is clicked on

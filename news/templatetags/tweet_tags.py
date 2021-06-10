@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def tweet_tags(url):  # what is passed into tweet_tags tho?
+def tweet_tags(url):  
     """ Requests a tweet from oembed and returns the html element """
 
     tweet_request = requests.get(

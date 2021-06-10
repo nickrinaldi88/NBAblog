@@ -12,21 +12,18 @@ register = template.Library()
 
 
 @register.simple_tag
-def red_attempt(url):  # what is passed into tweet_tags tho?
+def red_attempt(url):  
     """ Requests a tweet from oembed and returns the html element """
 
     headers = {
         'User-Agent': 'nba_comp app',
         'From': 'nickiscool88',
-        'Accept': 'application/json'  # This is another valid field
+        'Accept': 'application/json'  
     }
 
-    # pprint.pprint(dir(item))
-    # break
     endpoint = requests.get(
         f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}", headers=headers)
 
-    # check if endpoint is 200; if so, create json string
     return endpoint.json()['html']
 
 # todo

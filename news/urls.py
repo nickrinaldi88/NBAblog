@@ -9,7 +9,7 @@ urlpatterns = [
     path('test/<int:my_id>/', views.test, name='test'),
     path('detail/', views.detail, name='detail'),
     path('archive/', views.archive, name='archive'),
-    # path('main/', views.main, name='main'),
+    path('main/', views.main, name='main'),
     path('postview/', PostView.as_view()),
     path('', include('frontend.urls'))
 ]
