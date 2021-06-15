@@ -1,15 +1,13 @@
-5/28/21
-
-pre 1. Finish Tech with Tim tutorial
+6/14/21
+-Go through philgyford's code
+-https://stackoverflow.com/questions/35602049/how-to-insert-data-to-django-database-from-views-py-file
+-In services.py create a Post object through Post.objects create for each object you receive. 
 
 TODO:
 -Have a script fetching twitter and reddit API data over intervals of time. (Service.py)
 -This script needs to post this data to our database (models.py). Otherwise, we're just posting the raw API data onto our page.
 -Use tech with tim's react tutorial to design the frontend
 -Then create user authentication(What should the user be able to do?)
-
-CURRENT PROBLEM:
--When we fetch reddit and twitter posts from our database, They're not rendering properly compared when we post them directly from the api result on main.html
 
 
 -How our program should work:
@@ -36,6 +34,9 @@ CURRENT PROBLEM:
 4. Add more misc features
 5. Make the page pretty
 6. Handle server errors
+
+
+
 
 
 

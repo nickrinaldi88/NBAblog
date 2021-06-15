@@ -23,9 +23,6 @@ def red_attempt(url):
 
     endpoint = requests.get(
         f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}", headers=headers)
-
-    print(endpoint.status_code)
-
     return endpoint.json()['html']
 
 
