@@ -1,7 +1,18 @@
-6/14/21
--Go through philgyford's code
--https://stackoverflow.com/questions/35602049/how-to-insert-data-to-django-database-from-views-py-file
+6/15/21
+
 -In services.py create a Post object through Post.objects create for each object you receive. 
+-Troubleshoot Integrity Error
+
+
+
+
+
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 TODO:
 -Have a script fetching twitter and reddit API data over intervals of time. (Service.py)

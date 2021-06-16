@@ -1,6 +1,5 @@
 from enum import unique
 from django.db import models
-from news import services
 import json
 import sys
 # import tweets.py and reddit.py to do api calls
@@ -49,7 +48,6 @@ class Post(models.Model):
     root_url = models.CharField(max_length=200, default="", unique=True)
     html = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
-
 
 
 '''I need to learn how to integrate models with our api data'''

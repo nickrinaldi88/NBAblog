@@ -1,6 +1,5 @@
 import praw
 import tweepy
-# from .models import Tweet
 import requests
 import webbrowser
 import pprint
@@ -8,6 +7,8 @@ import json
 import os
 import sys
 import datetime
+from .models import Post
+
 
 sources = {}
 
@@ -51,13 +52,20 @@ def tweet_connect(key, secret, access_key, access_secret):
     default = 'https://twitter.com/twitter/statuses/'
 
     for status in my_timeline:
-        db.append(status.id)
         url = default + str(status.id)
-        t_post_dict[url] = str(status.created_at)
-        current_status.append(url)
+        tweet_request = requests.get(
+            'https://publish.twitter.com/oembed?url=' + url + '&omit_script=true')
+        tweet_json = tweet_request.json()
+        tweet_html = tweet_json['html']
+
+        Post.objects.create(post_type='Twitter', root_url=default+str(status.id),
+                            html=tweet_html)
+        # db.append(status.id)
+        # t_post_dict[url] = str(status.created_at)
+        # current_status.append(url)
 
     # return t_post_dict
-    return current_status
+    # return current_status
 
 
 # generate list of tweet urls
@@ -85,16 +93,30 @@ def reddit_connect(client_id, secret, username, password, user_agent):
     url_list = []
 
     for r in reddit.subreddit(sub).hot(limit=50):
-        url = r.permalink
-        time = r.created
-        dt_str = str(datetime.datetime.fromtimestamp(time))
-        r_post_dict[r.id] = dt_str
-        id_list.append(r.id)
-        url_list.append(url)
+        headers = {
+            'User-Agent': 'nba_comp app',
+            'From': 'nickiscool88',
+            'Accept': 'application/json'
+        }
 
-    # return r_post_dict
-    # return id_list[2:]
-    return url_list[2:]
+        endpoint = requests.get(
+            f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}", headers=headers)
+        the_html = endpoint.json()['html']
+
+        Post.objects.create(post_type='Reddit', root_url='r.permalink',
+                            html=the_html)
+        # url = r.permalink
+        # time = r.created
+        # dt_str = str(datetime.datetime.fromtimestamp(time))
+        # r_post_dict[r.id] = dt_str
+        # id_list.append(r.id)
+        # url_list.append(url)
+
+    # # return r_post_dict
+    # # return id_list[2:]
+    # return url_list[2:]
+
+# Post
 
 
 # client_id and secret
@@ -165,3 +187,8 @@ print(sources)
 # on joke.html for item in srcs, if src starts with 'https' load tweet tag, else, load reddit tag
 # pass in src as context
 # print(min(times))
+
+
+'''
+Have services.py run everytime refresh button is hit. Populate Post objects with specific data
+'''
