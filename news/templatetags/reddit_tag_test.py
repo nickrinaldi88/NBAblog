@@ -36,7 +36,3 @@ def reddit_tag_test(the_id):
     print(sub_url)
 
     return the_html
-
-
-ans = reddit_tag_test("mnk3sx")
-print(ans)

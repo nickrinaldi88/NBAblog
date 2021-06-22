@@ -15,7 +15,7 @@ def tweet_tags(url):  # what is passed into tweet_tags tho?
     tweet_request = requests.get(
         'https://publish.twitter.com/oembed?url=' + url + '&omit_script=true')
     tweet_json = tweet_request.json()
-    
+
     tweet_html = tweet_json['html']
     print(tweet_html)
     print(type(tweet_html))
@@ -25,7 +25,6 @@ def tweet_tags(url):  # what is passed into tweet_tags tho?
 
 result = tweet_tags(the_url)
 
-print(result)
 # 1. grab a url
 # 2. pass it into our tweet_tags function
 # 3. Take the result and render into our view through context

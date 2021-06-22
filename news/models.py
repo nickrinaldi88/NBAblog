@@ -6,52 +6,22 @@ import sys
 
 # do API calls, collect various data that fits model parameters
 
-# Create your models here.
-
-
-def red_connect():
-    # reddit_login
-    # mac reddit
-    # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
-
-    red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
-    red_f = open(red_datafile)
-    red_data = json.load(red_f)
-
-    red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
-                                  red_data['username'], red_data['password'], red_data['user_agent'])  # will return reddit posts
-
-
-def twit_connect():
-     # twitter login
-
-    sys.path.insert(
-        0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
-
-    # sys.path.insert(
-    # 0, '/Users/nick/Desktop/NBAblog-1/news')
-
-    here = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(here, 'tweet_info.json')
-
-    tweet_f = open(filename)
-    tweet_data = json.load(tweet_f)
-
-    twit = services.tweet_connect(tweet_data['consumer_key'],
-                                  tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])  # will return url's
-
 
 class Post(models.Model):
     # Reddit, Twitter, Youtube
     post_type = models.CharField(
         max_length=20, null=True, blank=True)
-    root_url = models.CharField(max_length=200, default="", unique=True)
+    root_url = models.CharField(max_length=200, default="")
     html = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 '''I need to learn how to integrate models with our api data'''
 '''store api data in models'''
+
+# Add User Model
+
+
 
 # class BlogPost(models.Model):
 #     # Reddit, Twitter, Youtube, etc.

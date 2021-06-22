@@ -11,10 +11,10 @@
   <div class="row">
     <div class="col-6">
       <h3 class='text-center'>Twitter News</h3>
-      {% for post in all %}
-        {% if post.post_type == 'twitter' %}
+      {% for post in posts %}
+        {% if post.post_type == 'Twitter' %}
           <div class="mdl-card__media" id="timeline"></div>
-            {{ post.html }}
+              {{ post.html }}
         {% endif %}
       <br>
       {% endfor %}
@@ -22,8 +22,8 @@
     </div>
     <div class="col-6">
       <h3 class='text-center'>Reddit News</h3>
-      {% for post in all %}
-        {% if post.post_type == 'reddit' %}
+      {% for post in posts %}
+        {% if post.post_type == 'Reddit' %}
           <div class="mdl-card__media" id="timeline"></div>
             {{ post.html }}
         {% endif %}

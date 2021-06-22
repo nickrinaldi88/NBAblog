@@ -9,7 +9,6 @@ import sys
 import datetime
 from .models import Post
 
-
 sources = {}
 
 # twitter
@@ -58,7 +57,7 @@ def tweet_connect(key, secret, access_key, access_secret):
         tweet_json = tweet_request.json()
         tweet_html = tweet_json['html']
 
-        Post.objects.create(post_type='Twitter', root_url=default+str(status.id),
+        Post.objects.create(post_type='Twitter', root_url=url,
                             html=tweet_html)
         # db.append(status.id)
         # t_post_dict[url] = str(status.created_at)
@@ -93,6 +92,7 @@ def reddit_connect(client_id, secret, username, password, user_agent):
     url_list = []
 
     for r in reddit.subreddit(sub).hot(limit=50):
+        url = r.permalink
         headers = {
             'User-Agent': 'nba_comp app',
             'From': 'nickiscool88',
@@ -103,8 +103,9 @@ def reddit_connect(client_id, secret, username, password, user_agent):
             f"https://www.reddit.com/oembed?url=https://www.reddit.com{url}", headers=headers)
         the_html = endpoint.json()['html']
 
-        Post.objects.create(post_type='Reddit', root_url='r.permalink',
-                            html=the_html)
+        Post.objects.create(post_type='Reddit',
+                            root_url=f"www.reddit.com{url}", html=the_html)
+
         # url = r.permalink
         # time = r.created
         # dt_str = str(datetime.datetime.fromtimestamp(time))

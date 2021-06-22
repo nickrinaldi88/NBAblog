@@ -129,7 +129,6 @@ def blog_post_view(request):
 
 
 def archive(request):
-    # Have api fetch store data in django database
-    all_posts = Post.objects.all
-    return render(request, "test.html", {'all': all_posts})
-    # will the page after a single post is clicked on
+    all_posts = Post.objects.all()
+    context = {'posts': all_posts}
+    return render(request, "test.html", context)

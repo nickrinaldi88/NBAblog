@@ -1,11 +1,15 @@
 6/15/21
 
 -In services.py create a Post object through Post.objects create for each object you receive. 
--Troubleshoot Integrity Error
+-Find out how to clear out posts
+-Find out why posts aren't printing to template
 
-
-
-
+-Add subscription service 
+    -Add user ability and ability to login 
+    -Will have to create User model to store data in DB 
+-Add tool to compare two players at the same time fetch data from bball reference 
+-Maybe add ticker of latest news? (Top posts on reddit?)  
+-Have background script run every specific interval to populate the DB 
 
 
 
