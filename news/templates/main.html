@@ -8,17 +8,17 @@
   <div class="row">
     <div class="col-6">
       <h3 class='text-center'>Reddit News</h3>
-      {% for item in reddit %}
+      {% comment %} {% for item in reddit %} {% endcomment %}
       <div class="mdl-card__media" id="timeline"></div>
-        {% red_attempt item %}
+        {% comment %} {% red_attempt item %} {% endcomment %}
       <br>
       {% endfor %}
     </div>
     <div class="col-6">
       <h3 class='text-center'>Twitter News</h3>
-      {% for item in twitter %}
+      {% comment %} {% for item in twitter %} {% endcomment %}
       <div class="mdl-card__media" id="timeline"></div>
-        {% tweet_tags item %}
+        {% comment %} {% tweet_tags item %} {% endcomment %}
       <br>
       {% endfor %}
     </div>

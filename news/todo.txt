@@ -8,9 +8,17 @@
     -Add user ability and ability to login 
     -Will have to create User model to store data in DB 
 -Add tool to compare two players at the same time fetch data from bball reference 
+    -Follow this: https://getbootstrap.com/docs/4.0/components/forms/
 -Maybe add ticker of latest news? (Top posts on reddit?)  
 -Have background script run every specific interval to populate the DB 
+-Figure out way to load page quicker, takes up a lot of memory. Maybe refresh DB with newest posts, 
+delete old?
 
+6/25/21
+
+-Look up main page error:
+-https://stackoverflow.com/questions/47585583/the-number-of-get-post-parameters-exceeded-settings-data-upload-max-number-field
+-Construct Player comparsion tool
 
 
 

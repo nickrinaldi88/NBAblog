@@ -128,7 +128,11 @@ def blog_post_view(request):
     return render(request, "blogpost/blog_post_test.html", context)
 
 
-def archive(request):
-    all_posts = Post.objects.all()
-    context = {'posts': all_posts}
-    return render(request, "test.html", context)
+def test(request):
+    return render(request, 'test.html')
+
+
+def mainpage(request):
+    all_posts=Post.objects.all()
+    context={'posts': all_posts}
+    return render(request, "mainpage.html", context)
