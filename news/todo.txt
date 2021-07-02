@@ -20,6 +20,23 @@ delete old?
 -https://stackoverflow.com/questions/47585583/the-number-of-get-post-parameters-exceeded-settings-data-upload-max-number-field
 -Construct Player comparsion tool
 
+-I can send 
+
+
+6/26/21
+-Have our HTML forms activate python functions which will scrape specific data?
+-Parse BBall ref scraper to see how that code is done
+
+6/30/21
+-Check stackoverflow 
+-Work on inner functionality of player comparison tool using code from bball ref 
+lib on github, making your own functions
+
+7/1/21
+-Read about Pagination
+
+-Work on inner functionality of player comparison tool using code from bball ref 
+lib on github, making your own functions
 
 
 
