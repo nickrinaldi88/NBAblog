@@ -80,9 +80,9 @@ def test_request():
 
         all_tables = soup.find_all('table')
 
-    df = pd.DataFrame()
+    df = pd.read_html(str(all_tables[0]))
 
-    print(all_tables[0])
+    print(df)
 
     # link = f'https://www.basketball-reference.com/players/{initial}/{suffix}01.html'
 
