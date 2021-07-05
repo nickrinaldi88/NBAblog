@@ -38,10 +38,10 @@ def create_suff(name):
 
     # print(list_names)
 
-    first_half = list_names[1][:5]
+    first_half = list_names[1][:5].lower()
 
-    last_half = list_names[0][:2]
-    initial = list_names[1][0]
+    last_half = list_names[0][:2].lower()
+    initial = list_names[1][0].lower()
 
     suffix = first_half + last_half
 
@@ -54,18 +54,13 @@ def create_suff(name):
     return text
 
 
-print(create_suff(player_name))
+p_suf = create_suff(player_name)
 
-
-def get_suff(name):
-    initial = name.split(' ')[1][0].lower()
-
-    print(initial)
-
-
-# get_suff(name)
 
 def remove(name):
+    '''
+    Remove accents 
+    '''
 
     alphabet = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXZY ')
 
@@ -79,7 +74,11 @@ def remove(name):
         return "hi"
 
 
-def test_request():
+def test_request(player_suffix):
+    '''
+    Input is a list of the players suffix[0] + initial[1] 
+    '''
+
     '''
     Make sure to add initial and suffix args
 
@@ -90,10 +89,11 @@ def test_request():
     # -Generate initial and suffix, then make a request on each player's page
     # -Grab the table element for each page
     '''
+    the_link = f"https://www.basketball-reference.com/players/{player_suffix[1]}/{player_suffix[0]}01.html"
 
-    parsed_link = "https://www.basketball-reference.com/players/t/tatumja01.html"
+    # parsed_link = "https://www.basketball-reference.com/players/t/tatumja01.html"
 
-    response = requests.get(parsed_link)
+    response = requests.get(the_link)
 
     if response.status_code == 200:
 
@@ -107,6 +107,8 @@ def test_request():
 
     # link = f'https://www.basketball-reference.com/players/{initial}/{suffix}01.html'
 
+
+test_request(p_suf)
 
 # test_request()
 
