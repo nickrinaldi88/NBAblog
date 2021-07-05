@@ -8,32 +8,53 @@ import pandas as pd
 
 '''
 TODO:
-1. Write a web scraper and parse this page: https://www.basketball-reference.com/players/ 
+1. Write a web scraper and parse this page: https://www.basketball-reference.com/players/
     and save a list of players names in text doc
-2. Create function that takes in player name and creates suffix 
+2. Create function that takes in player name and creates suffix
 
 -Parse bball ref scraper to see how code works
--A levenshtein score is needed to find player names specifically 
+-A levenshtein score is needed to find player names specifically
 
 '''
 
 '''
-TODO: 
+TODO:
 Annotate BBall ref scraper scripts.
 Utils - DONE
 
 '''
 
 # player_name = input("Please enter a player's name: ")
+player_name = "lebron james"
 
-name = "bobby portis"
+# name = "bobby portis"
 
 
 def create_suff(name):
+
+    text = []
+
+    list_names = name.split()
+
+    # print(list_names)
+
+    first_half = list_names[1][:5]
+
+    last_half = list_names[0][:2]
+    initial = list_names[1][0]
+
+    suffix = first_half + last_half
+
+    text.append(suffix)
+    text.append(initial)
+
     '''
     Creates suffix for nonexistent players
     '''
-    pass
+    return text
+
+
+print(create_suff(player_name))
 
 
 def get_suff(name):
@@ -67,7 +88,7 @@ def test_request():
     # -Generate List of Seasons for each player onto screen
     # -Intake Season for each
     # -Generate initial and suffix, then make a request on each player's page
-    # -Grab the table element for each page 
+    # -Grab the table element for each page
     '''
 
     parsed_link = "https://www.basketball-reference.com/players/t/tatumja01.html"
@@ -87,7 +108,7 @@ def test_request():
     # link = f'https://www.basketball-reference.com/players/{initial}/{suffix}01.html'
 
 
-test_request()
+# test_request()
 
 
 '''
