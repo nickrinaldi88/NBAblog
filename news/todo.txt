@@ -39,6 +39,15 @@ lib on github, making your own functions
 lib on github, making your own functions
 
 
+7/8/21
+-How to have button execute python script to fetch data.
+    *Have form submit a post request. Intercept the post request in urls.py, where 
+    function would be called. 
+    # Finish watching this video: https://www.youtube.com/watch?v=vM9mcWr1RMg 7:51
+    # Refer to this post: https://stackoverflow.com/questions/54438473/how-to-execute-file-py-on-html-button-press-using-django
+-Once data for player is fetched, insert into DB
+
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -14,10 +14,24 @@ from news import red_praw
 from .models import Post
 from news import services
 import sys
+from .forms import PlayerStats
 
 # Create your views here.
 
 # create api view
+
+
+def test(request):
+
+    form = PlayerStats()
+
+    return render(request, 'test.html', {"form": form})
+
+
+def mainpage(request):
+    all_posts = Post.objects.all()
+    context = {'posts': all_posts}
+    return render(request, "mainpage.html", context)
 
 
 class PostView(generics.CreateAPIView):
@@ -98,17 +112,6 @@ def index(request):
 #     # will contain main blog feed
 
 
-def test(request, my_id):
-    # obj = BlogPost.objects.get(id=my_id)
-    obj = get_object_or_404(BlogPost, id=my_id)
-
-    my_context = {
-        "object": obj
-    }
-
-    return render(request, 'test.html', my_context)
-
-
 def detail(request):
     return HttpResponse("This is a single post")
 
@@ -126,13 +129,3 @@ def blog_post_view(request):
 
     # }
     return render(request, "blogpost/blog_post_test.html", context)
-
-
-def test(request):
-    return render(request, 'test.html')
-
-
-def mainpage(request):
-    all_posts=Post.objects.all()
-    context={'posts': all_posts}
-    return render(request, "mainpage.html", context)

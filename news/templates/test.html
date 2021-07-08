@@ -12,38 +12,44 @@
 {% endfor %} {% endautoescape %}{% endblock %} {% endcomment %}
 
 <div class="main-container">
-  <div class="input-forms">
-    <form action="">
-      <div class="form-group">
-        <label for="Player 1">Player 1</label>
-        <input type="Player 1" placeholder="Player 1 Name" />
-      </div>
-          <div class="form-group">
-            <br>
-      <label for="Season">Season</label>
-      <input type="Season" placeholder="Season">
-
-    </div>
-      <br>
-
-
-    <div class="form-group">
-        <label for="Player 2">Player 2</label>
-        <input type="Player 2" placeholder="Player 2 Name">
-    </div>
-    <br>
-    <div class="form-group">
-      <label for="Season">Season</label>
-      <input type="Season" placeholder="Season">
-
-    </div>
-      <br>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    </div>
-  </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
+      <div class="input-forms">
+        <form action="submit" method="post">
+          {{ form }}
+          <!-- <div class="form-group">
+            <label for="Player 1">Player 1</label>
+            <input type="text" placeholder="Player 1 Name" />
+          </div>
+          <div class="form-group">
+            <br />
+            <label for="Season">Season</label>
+            <input type="Season" placeholder="Season" />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="Player 2">Player 2</label>
+            <input type="text" placeholder="Player 2 Name" />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="Season">Season</label>
+            <input type="Season" placeholder="Season" />
+          </div> -->
+          <br />
+          <button type="submit" name="run_script" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+      <div class="stat-display">
+        <p>Post Data:</p>
+        <p>Result:</p>
+        <!-- Display stats in here.  -->
+      </div>
+    </div>
+
+    <div class="col-4">
       <h3 class="text-center">Twitter News</h3>
       <br />
 
@@ -53,7 +59,7 @@
         charset="utf-8"
       ></script>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <h3 class="text-center">Reddit News</h3>
 
       <br />
