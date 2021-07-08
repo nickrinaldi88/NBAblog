@@ -1,6 +1,5 @@
 # To be used as a tool on django site
 
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -28,6 +27,10 @@ Utils - DONE
 player_name = "lebron james"
 
 # name = "bobby portis"
+
+
+p1 = input("Enter player 1's name: ")  # first input box
+p2 = input("Enter player 2's name: ")  # second input box
 
 
 def create_suff(name):
@@ -117,6 +120,12 @@ test_request(p_suf)
 6/30/21:
 -Refer to bball ref github code to implant correct season for player
 -Or create player match function
+'''
+
+'''
+7/7/21
+-Create a gui to simulate what I want, 
+then implement on website
 '''
 
 
