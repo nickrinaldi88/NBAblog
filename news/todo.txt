@@ -43,9 +43,24 @@ lib on github, making your own functions
 -How to have button execute python script to fetch data.
     *Have form submit a post request. Intercept the post request in urls.py, where 
     function would be called. 
-    # Finish watching this video: https://www.youtube.com/watch?v=vM9mcWr1RMg 7:51
+    -Return value of function shouldbe displayed on HTML template. 
     # Refer to this post: https://stackoverflow.com/questions/54438473/how-to-execute-file-py-on-html-button-press-using-django
 -Once data for player is fetched, insert into DB
+
+
+7/9/21
+-Function is complete. Now we need to send our form data
+as function args, and call that function. Then the return data
+we need to convert to raw html and post. 
+
+1-Look up how to pass in Django form data into function, while
+calling that function upon button click
+2-Look up how to display DF data as raw HTML (maybe as table element??)
+
+7/24/21
+-Find out how to retrieve form submission data
+-How to extract this data, then pass it into function parameters. Then display function results in view. 
+
 
 
 

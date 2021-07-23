@@ -29,8 +29,60 @@ player_name = "lebron james"
 # name = "bobby portis"
 
 
-p1 = input("Enter player 1's name: ")  # first input box
-p2 = input("Enter player 2's name: ")  # second input box
+def main(p1, p2, s1, s2):
+
+    # list to be returned containing both player stats
+
+    player_stats = []
+
+    # create suffixes
+
+    p1_suf = create_suff(p1)
+    p2_suf = create_suff(p2)
+
+    # player 1 request
+
+    link1 = f"https://www.basketball-reference.com/players/{p1_suf[1]}/{p1_suf[0]}01.html"
+
+    response1 = requests.get(link1)
+
+    if response1.status_code == 200:
+
+        soup = BeautifulSoup(response1.content, 'html.parser')
+
+        all_tables = soup.find_all('table')
+
+    df1 = pd.read_html(str(all_tables[0]))[0]
+
+    year_suf1 = str(int(s1) + 1)[-2:]
+
+    season1 = s1 + "-" + year_suf1
+
+    p1_stats = df1
+
+    # player 2 request
+
+    link2 = f"https://www.basketball-reference.com/players/{p2_suf[1]}/{p2_suf[0]}01.html"
+
+    response2 = requests.get(link2)
+
+    if response2.status_code == 200:
+
+        soup = BeautifulSoup(response2.content, 'html.parser')
+
+        all_tables = soup.find_all('table')
+
+    df2 = pd.read_html(str(all_tables[0]))[0]
+
+    year_suf2 = str(int(s1) + 1)[-2:]
+
+    season2 = s2 + "-" + year_suf2
+
+    p2_stats = df2.loc[df2['Season'] == season2]
+
+    player_stats.append(p1_stats, p2_stats)
+
+    return player_stats
 
 
 def create_suff(name):
@@ -62,7 +114,7 @@ p_suf = create_suff(player_name)
 
 def remove(name):
     '''
-    Remove accents 
+    Remove accents
     '''
 
     alphabet = set('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXZY ')
@@ -77,9 +129,9 @@ def remove(name):
         return "hi"
 
 
-def test_request(player_suffix):
+def test_request(player_suffix, s1):
     '''
-    Input is a list of the players suffix[0] + initial[1] 
+    Input is a list of the players suffix[0] + initial[1]
     '''
 
     '''
@@ -104,14 +156,29 @@ def test_request(player_suffix):
 
         all_tables = soup.find_all('table')
 
-    df = pd.read_html(str(all_tables[0]))
+    df = pd.read_html(str(all_tables[0]))[0]
 
-    print(df)
+    # convert to dataframe
+
+    # dfs = df[0]
+
+    year_suf = str(int(s1) + 1)[-2:]
+
+    season = s1 + "-" + year_suf
+
+    print(df.loc[df['Season'] == season])
+
+    # for row in df[0]['Season']:
+    #     if str(row).startswith(s1):
+    #         print(row)
+    # value = df[0]['Season']
+    # print row where Season columns starts with season in put
+    # print(value)
 
     # link = f'https://www.basketball-reference.com/players/{initial}/{suffix}01.html'
 
 
-test_request(p_suf)
+# test_request(p_suf, '2020')
 
 # test_request()
 
@@ -124,78 +191,6 @@ test_request(p_suf)
 
 '''
 7/7/21
--Create a gui to simulate what I want, 
+-Create a gui to simulate what I want,
 then implement on website
 '''
-
-
-# Normalize name string
-
-
-# Create options that user can select with drop down
-
-
-# seasons = []
-
-
-# year = 2020
-# # year = 2021
-
-# url = "https://www.basketball-reference.com/leagues/NBA_{}_per_game.html".format(
-#     year)
-
-# # store webpage in variable
-
-# html = urlopen(url)
-
-# # convert webpage to soup object
-
-# soup = BeautifulSoup(html)
-
-# # print(soup)
-
-
-# headers = [th.getText() for th in soup.findAll('tr', limit=2)[0].findAll('th')]
-
-# # exclude first column
-# headers = headers[1:]
-
-# rows = soup.findAll('tr')[1:]
-
-# player_stats = [[td.getText() for td in rows[i].findAll('td')]
-#                 for i in range(len(rows))]
-
-# stats = pd.DataFrame(player_stats, columns=headers)
-
-# # print(headers)
-# # print(stats.head(10))
-
-# # print(stats['Player'][0])
-
-# names = ["Zach Lavine", "Brandon Ingram", "Jayson Tatum", "Jaylen Brown"]
-
-# # print(stats[stats['Player'].str.contains(name)])
-
-# for name in names:
-#     if stats['Player'].str.contains(name):
-#         print(name)
-
-
-# rook_url = "https://www.basketball-reference.com/leagues/NBA_2021_rookies-season-stats.html"
-
-# rook_html = urlopen(rook_url)
-
-# rook_soup = BeautifulSoup(rook_html)
-
-# r_headers = [th.getText() for th in rook_soup.findAll('tr', limit=2)[1].findAll('th')]
-
-# r_headers = r_headers[1]
-# print(r_headers)
-
-# r_rows = soup.findAll('tr')[1:]
-
-# print(r_rows)
-
-# player_names = [[td.getText() for td in ]]
-
-# extract nba rookie names

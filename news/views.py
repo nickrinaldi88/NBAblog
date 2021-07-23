@@ -1,9 +1,10 @@
+from django.http.response import HttpResponseRedirect
 from news import serializers
 from news.serializers import PostSerializer, CreatePostSerializer
 import os
 import json
 import requests
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, status
 from rest_framework.views import APIView
@@ -23,7 +24,20 @@ from .forms import PlayerStats
 
 def test(request):
 
-    form = PlayerStats()
+    form = PlayerStats(request.POST)
+
+    if request.method == "POST":
+        pass
+
+        if form.is_valid():
+            p1 = form.cleaned_data['Player1']
+            s1 = form.cleaned_data['Season1']
+            p2 = form.cleaned_data['Player1']
+            s2 = form.cleaned_data['Season2']
+
+  # call main with parameters
+
+        # call function
 
     return render(request, 'test.html', {"form": form})
 
