@@ -16,6 +16,7 @@ from .models import Post
 from news import services
 import sys
 from .forms import PlayerStats
+from .bball_refparser import main
 
 # Create your views here.
 
@@ -24,20 +25,27 @@ from .forms import PlayerStats
 
 def test(request):
 
-    form = PlayerStats(request.POST)
+    form = PlayerStats()
 
     if request.method == "POST":
-        pass
+        form = PlayerStats(request.POST)
 
         if form.is_valid():
             p1 = form.cleaned_data['Player1']
             s1 = form.cleaned_data['Season1']
-            p2 = form.cleaned_data['Player1']
+            p2 = form.cleaned_data['Player2']
             s2 = form.cleaned_data['Season2']
+
+            stats = main(p1, p2, s1, s2)
+
+            return render(request, 'test.html', {"form": form, "p1_stats": stats[0], "p2_stats": stats[1]})
+
+    else:
+        form = form = PlayerStats()
 
   # call main with parameters
 
-        # call function
+    # call function
 
     return render(request, 'test.html', {"form": form})
 

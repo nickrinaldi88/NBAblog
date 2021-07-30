@@ -1,4 +1,4 @@
+    player_stats.append(p1_stats)
+    player_stats.append(p2_stats)
 
-    # for row in df[0]['Season']:
-    #     if str(row).startswith(s1):
-    #         print(row)
+    return player_stats

@@ -54,11 +54,11 @@ def main(p1, p2, s1, s2):
 
     df1 = pd.read_html(str(all_tables[0]))[0]
 
-    year_suf1 = str(int(s1) + 1)[-2:]
+    year_suf1 = str(int(s1))[-2:]
 
-    season1 = s1 + "-" + year_suf1
+    season1 = str(int(s1)-1) + "-" + year_suf1
 
-    p1_stats = df1
+    p1_stats = df1.loc[df1['Season'] == season1]
 
     # player 2 request
 
@@ -74,13 +74,18 @@ def main(p1, p2, s1, s2):
 
     df2 = pd.read_html(str(all_tables[0]))[0]
 
-    year_suf2 = str(int(s1) + 1)[-2:]
+    year_suf2 = str(int(s2))[-2:]
 
-    season2 = s2 + "-" + year_suf2
+    season2 = str(int(s2)-1) + "-" + year_suf2
 
     p2_stats = df2.loc[df2['Season'] == season2]
 
-    player_stats.append(p1_stats, p2_stats)
+    # print(p1_stats)
+    # print("----")
+    # print(p2_stats)
+
+    player_stats.append(p1_stats)
+    player_stats.append(p2_stats)
 
     return player_stats
 
@@ -181,16 +186,3 @@ def test_request(player_suffix, s1):
 # test_request(p_suf, '2020')
 
 # test_request()
-
-
-'''
-6/30/21:
--Refer to bball ref github code to implant correct season for player
--Or create player match function
-'''
-
-'''
-7/7/21
--Create a gui to simulate what I want,
-then implement on website
-'''

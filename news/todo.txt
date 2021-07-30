@@ -48,20 +48,9 @@ lib on github, making your own functions
 -Once data for player is fetched, insert into DB
 
 
-7/9/21
--Function is complete. Now we need to send our form data
-as function args, and call that function. Then the return data
-we need to convert to raw html and post. 
-
-1-Look up how to pass in Django form data into function, while
-calling that function upon button click
-2-Look up how to display DF data as raw HTML (maybe as table element??)
-
-7/24/21
--Find out how to retrieve form submission data
--How to extract this data, then pass it into function parameters. Then display function results in view. 
-
-
+7/29/21
+-We have our main function from bball ref parser in our view. We're passing in our player and season variables,
+however we're receiving a type error that our function only takes 1 argument. We're passing in 4, and it should be taking 4, so try to troubleshoot this issue next. 
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^
