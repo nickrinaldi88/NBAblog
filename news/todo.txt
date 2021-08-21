@@ -90,6 +90,13 @@ TODO:
 
 
 
+8/21/21
+-Learn Pagination 
+-https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html
+-Learn how to implement ticker
+-https://medium.com/@auxyz/creating-a-cryptocoin-price-ticker-with-django-2-0-part-one-2b628deb85d9
+
+
 
 
 
