@@ -28,6 +28,7 @@ def generate(posts):
     return items
     # return the_html
 
+# adding some comments to test out git uplaod
 
 red = generate(posts)
 

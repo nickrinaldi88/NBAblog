@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
+# also adding some comments here
+
 '''
 TODO:
 1. Write a web scraper and parse this page: https://www.basketball-reference.com/players/
