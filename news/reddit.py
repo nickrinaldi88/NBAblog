@@ -29,9 +29,6 @@ def generate(posts):
     # return the_html
 
 
-red = generate(posts)
-
-
 # check post['data']['created'] timestamp, check whether or not post was created in the last minute, display it.
 
 # grab subreddit url

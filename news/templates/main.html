@@ -4,7 +4,6 @@
   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
   crossorigin="anonymous"
 />
-
 {% block content %}{% load red_attempt %} {% load tweet_tags %} {% autoescape
 off %}
 <h1>Welcome</h1>
@@ -13,23 +12,23 @@ off %}
   <div class="row">
     <div class="col-6">
       <h3 class="text-center">Reddit News</h3>
-      {% comment %} {% for item in reddit %} {% endcomment %}
       <div class="mdl-card__media" id="timeline"></div>
-      {% comment %} {% red_attempt item %} {% endcomment %}
+      {% for item in posts %} {{ item.html }} {% comment %} {% red_attempt item
+      %} {% endcomment %}
       <br />
-      {% comment %} {% endfor %} {% endcomment %}
+      {% endfor %}
     </div>
     <div class="col-6">
       <h3 class="text-center">Twitter News</h3>
-      {% comment %} {% for item in twitter %} {% endcomment %}
       <div class="mdl-card__media" id="timeline"></div>
-      {% comment %} {% tweet_tags item %} {% endcomment %}
+      {% for item in posts %} {{ item.html }} {% comment %} {% tweet_tags item
+      %} {% endcomment %}
       <br />
-      {% comment %} {% endfor %} {% endcomment %}
+      {% endfor %}
     </div>
   </div>
 </div>
-{% comment %} {% endautoescape %} {% endcomment %} {% endblock %}
+{% endblock %}
 
 <script
   async

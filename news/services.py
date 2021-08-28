@@ -33,6 +33,8 @@ except:
     db = []
 
 
+# connect to api 
+
 def tweet_connect(key, secret, access_key, access_secret):
 
     auth = tweepy.OAuthHandler(key, secret)
@@ -44,11 +46,15 @@ def tweet_connect(key, secret, access_key, access_secret):
 
     t_post_dict = {}
 
+    # grab size count of tweets on home timeline
+
     my_timeline = api.home_timeline(count=50)
 
     current_status = []
 
     default = 'https://twitter.com/twitter/statuses/'
+
+    # grab raw html of each tweet in timeline
 
     for status in my_timeline:
         url = default + str(status.id)
@@ -56,6 +62,8 @@ def tweet_connect(key, secret, access_key, access_secret):
             'https://publish.twitter.com/oembed?url=' + url + '&omit_script=true')
         tweet_json = tweet_request.json()
         tweet_html = tweet_json['html']
+
+        # create Post object with extracted tweet data
 
         Post.objects.create(post_type='Twitter', root_url=url,
                             html=tweet_html)
@@ -72,8 +80,9 @@ def tweet_connect(key, secret, access_key, access_secret):
 tweet_result = tweet_connect(tweet_data['consumer_key'],
                              tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
-'''reddit'''
 
+
+# reddit 
 
 def reddit_connect(client_id, secret, username, password, user_agent):
 
@@ -106,25 +115,15 @@ def reddit_connect(client_id, secret, username, password, user_agent):
         Post.objects.create(post_type='Reddit',
                             root_url=f"www.reddit.com{url}", html=the_html)
 
-        # url = r.permalink
-        # time = r.created
-        # dt_str = str(datetime.datetime.fromtimestamp(time))
-        # r_post_dict[r.id] = dt_str
-        # id_list.append(r.id)
-        # url_list.append(url)
-
-    # # return r_post_dict
-    # # return id_list[2:]
-    # return url_list[2:]
-
-# Post
-
 
 # client_id and secret
 
 red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
 
-# mac reddit
+
+
+
+##################### Mac reddit #######################
 
 # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
 

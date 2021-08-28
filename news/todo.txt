@@ -14,13 +14,19 @@
 -Figure out way to load page quicker, takes up a lot of memory. Maybe refresh DB with newest posts, 
 delete old?
 
-6/25/21
+8/21/21
+-Learn Pagination 
+-https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html
+-Learn how to implement ticker
+-https://medium.com/@auxyz/creating-a-cryptocoin-price-ticker-with-django-2-0-part-one-2b628deb85d9
 
--Look up main page error:
--https://stackoverflow.com/questions/47585583/the-number-of-get-post-parameters-exceeded-settings-data-upload-max-number-field
--Construct Player comparsion tool
 
--I can send 
+
+8/22/21
+-Troubleshoot current error, why twitter and reddit elements won't load 
+
+
+
 
 
 6/26/21
@@ -87,16 +93,6 @@ TODO:
 4. Add more misc features
 5. Make the page pretty
 6. Handle server errors
-
-
-
-8/21/21
--Learn Pagination 
--https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html
--Learn how to implement ticker
--https://medium.com/@auxyz/creating-a-cryptocoin-price-ticker-with-django-2-0-part-one-2b628deb85d9
-
-
 
 
 
