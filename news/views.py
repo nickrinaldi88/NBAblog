@@ -109,7 +109,10 @@ def main(request):
     twit = services.tweet_connect(tweet_data['consumer_key'],
                                   tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
-    return render(request, 'main.html', {'reddit': red, 'twitter': twit})
+    all_posts = Post.objects.all()
+    context = {'posts': all_posts}
+
+    return render(request, 'main.html', context)
 
 
 def index(request):
