@@ -59,48 +59,12 @@ def mainpage(request):
 
 def main(request):
 
-    numbers_list = range(1, 1000)
-
-    # reddit_login
-    # mac reddit
-    # red_datafile = "/Users/nick/Desktop/NBAblog-1/news/red_info.json"
-
-    red_datafile = "C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news\\red_info.json"
-    red_f = open(red_datafile)
-    red_data = json.load(red_f)
-
-    red = services.reddit_connect(red_data['client_id'], red_data['client_secret'],
-                                  red_data['username'], red_data['password'], red_data['user_agent'])
-    # twitter login
-
     sys.path.insert(
         0, 'C:\\Users\\Nick\\Desktop\\2021 Python\\NBA_Project\\NBAblog\\news')
 
-    # sys.path.insert(
-    # 0, '/Users/nick/Desktop/NBAblog-1/news')
-
     here = os.path.dirname(os.path.abspath(__file__))
-    filename = os.path.join(here, 'tweet_info.json')
-
-    tweet_f = open(filename)
-    tweet_data = json.load(tweet_f)
-
-    twit = services.tweet_connect(tweet_data['consumer_key'],
-                                  tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
-
     all_posts = Post.objects.all()
-    page = request.GET.get('page', 1)
-    paginator = Paginator(all_posts, 5)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    try:
-        numbers = paginator.page(page)
-    except PageNotAnInteger:
-        numbers = paginator.page(1)
-    except EmptyPage:
-        numbers = paginator.page(paginator.num_pages)
-
-    context = {'posts': all_posts, 'page_obj': page_obj}
+    context = {'posts': all_posts,}
 
     return render(request, 'main.html', context)
 

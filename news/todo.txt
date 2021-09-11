@@ -144,15 +144,16 @@ Endgame work:
 
 9/5/21
 ###################### BACKEND #####################################
-# -Solve AttributeError: 'WSGIRequest' object has no attribute 'Get'
-# -Delete model posts
 # -Find more efficient way to store, load post data. Maybe change
 # api link to get less than 50 posts?
 # -Determine how posts will be loaded/displayed/stored in db
+# - Introduce celery instance to make API calls
+
 
 ##################### FrontEnd ######################################
 -Decide on a framework, React/Vue Js 
 -Decide on layout
+    -Troubleshoot css script
 -Work on ticker
 
 while Event.objects.count():
