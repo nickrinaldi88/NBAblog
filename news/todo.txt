@@ -141,3 +141,20 @@ Endgame work:
     -Store that data. Then fetch from Database. 
     
 -So we'll have to fetch from database and place in our view. 
+
+9/5/21
+###################### BACKEND #####################################
+# -Solve AttributeError: 'WSGIRequest' object has no attribute 'Get'
+# -Delete model posts
+# -Find more efficient way to store, load post data. Maybe change
+# api link to get less than 50 posts?
+# -Determine how posts will be loaded/displayed/stored in db
+
+##################### FrontEnd ######################################
+-Decide on a framework, React/Vue Js 
+-Decide on layout
+-Work on ticker
+
+while Event.objects.count():
+    ids = Event.objects.values_list('pk', flat=True)[:100]
+    Event.objects.filter(pk__in = ids).delete()

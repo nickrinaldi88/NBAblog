@@ -17,6 +17,7 @@ from news import services
 import sys
 from .forms import PlayerStats
 from .bball_refparser import main
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -56,31 +57,9 @@ def mainpage(request):
     return render(request, "mainpage.html", context)
 
 
-class PostView(generics.CreateAPIView):
-    queryset = Post.objects.all()  # all objects (all posts?) We want all the posts
-    serializer_class = PostSerializer  # should return json response
-
-
-class CreatePostView(APIView):
-    serializer_class = CreatePostSerializer
-
-    def post(self, request, format=None):
-        # if our user doesn't have an active session with our server, create one
-        if not self.request.session.exists(self.request.session.session_key):
-            self.request.session.create()
-
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():  # if our fields in CreatePostSerializer are valid or received,
-            post_type = serializer.data.post_type
-            root_url = serializer.data.root_url
-            html = serializer.data.html
-            created_at = serializer.data.created_at
-            user_sesh = self.request.session.session_key
-
-        return PostSerializer
-
-
 def main(request):
+
+    numbers_list = range(1, 1000)
 
     # reddit_login
     # mac reddit
@@ -110,7 +89,18 @@ def main(request):
                                   tweet_data['consumer_secret'], tweet_data['access_key'], tweet_data['access_secret'])
 
     all_posts = Post.objects.all()
-    context = {'posts': all_posts}
+    page = request.GET.get('page', 1)
+    paginator = Paginator(all_posts, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    try:
+        numbers = paginator.page(page)
+    except PageNotAnInteger:
+        numbers = paginator.page(1)
+    except EmptyPage:
+        numbers = paginator.page(paginator.num_pages)
+
+    context = {'posts': all_posts, 'page_obj': page_obj}
 
     return render(request, 'main.html', context)
 

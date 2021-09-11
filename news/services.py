@@ -48,7 +48,7 @@ def tweet_connect(key, secret, access_key, access_secret):
 
     # grab size count of tweets on home timeline
 
-    my_timeline = api.home_timeline(count=50)
+    my_timeline = api.home_timeline(count=5)
 
     current_status = []
 
