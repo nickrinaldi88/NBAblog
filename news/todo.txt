@@ -148,6 +148,8 @@ Endgame work:
 # api link to get less than 50 posts?
 # -Determine how posts will be loaded/displayed/stored in db
 # - Introduce celery instance to make API calls
+# Set up celery to receive tasks to run, run them outside of app logic
+# https://www.youtube.com/watch?v=b-6mEAr1m-A - Finish making heroku app for task broker
 
 
 ##################### FrontEnd ######################################
@@ -156,6 +158,3 @@ Endgame work:
     -Troubleshoot css script
 -Work on ticker
 
-while Event.objects.count():
-    ids = Event.objects.values_list('pk', flat=True)[:100]
-    Event.objects.filter(pk__in = ids).delete()
