@@ -125,4 +125,6 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 STATIC_URL = '/static/'
 
-# Solve AttributeError: 'WSGIRequest' object has no attribute 'Get'
+CELERY_BROKER_URL = 'redis://:p5df3b2b98ac050dc4a76240ddf992f24e194747b0b75ed503c29432ac6ecb7f8@ec2-35-170-1-118.compute-1.amazonaws.com:28400'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'

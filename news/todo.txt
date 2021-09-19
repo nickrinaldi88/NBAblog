@@ -149,7 +149,7 @@ Endgame work:
 # -Determine how posts will be loaded/displayed/stored in db
 # - Introduce celery instance to make API calls
 # Set up celery to receive tasks to run, run them outside of app logic
-# https://www.youtube.com/watch?v=b-6mEAr1m-A - Finish making heroku app for task broker
+# https://www.youtube.com/watch?v=b-6mEAr1m-A - Finish making heroku app for task broker - 10:33
 
 
 ##################### FrontEnd ######################################

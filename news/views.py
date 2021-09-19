@@ -18,6 +18,7 @@ import sys
 from .forms import PlayerStats
 from .bball_refparser import main
 from django.core.paginator import Paginator
+from .tasks import sleepy
 
 # Create your views here.
 
@@ -64,12 +65,13 @@ def main(request):
 
     here = os.path.dirname(os.path.abspath(__file__))
     all_posts = Post.objects.all()
-    context = {'posts': all_posts,}
+    context = {'posts': all_posts, }
 
     return render(request, 'main.html', context)
 
 
 def index(request):
+    sleepy(10)
     return HttpResponse("Hello, world. You're at the main index.")
 
 

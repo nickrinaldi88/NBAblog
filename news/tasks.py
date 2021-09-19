@@ -1,13 +1,19 @@
+# module load
+
 import praw
 import tweepy
 import requests
 import webbrowser
 import pprint
 import json
+import time
 import os
 import sys
 import datetime
+from celery import shared_task
 from .models import Post
+
+
 
 # twitter
 sys.path.insert(
@@ -15,6 +21,14 @@ sys.path.insert(
 
 
 here = os.path.dirname(os.path.abspath(__file__))
+
+
+# celery instance
+
+@shared_task
+def sleepy(duration):
+    time.sleep(duration)
+    return None
 
 # connect to api
 

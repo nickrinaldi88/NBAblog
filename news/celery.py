@@ -12,3 +12,4 @@ app.autodiscover_tasks()  # looks for tasks.py in app folder
 
 @app.task(bind=True)
 def api_calls(self):
+    pass

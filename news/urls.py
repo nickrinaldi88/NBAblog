@@ -9,5 +9,6 @@ urlpatterns = [
     path('test/submit', views.test, name='test'),
     path('detail/', views.detail, name='detail'),
     path('main/', views.main, name='main'),
+    path('index/', views.index, name='index'),
     path('', include('frontend.urls'))
 ]
